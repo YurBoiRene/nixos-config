@@ -13,17 +13,13 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
-  # Configuration
-  programs.dconf.enable = true;
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
 
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
     xkbVariant = "";
   };
+  
   environment.systemPackages = with pkgs; [
     gnomeExtensions.dash-to-dock
     gnomeExtensions.caffeine

@@ -4,8 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+       url = "github:nix-community/home-manager";
+       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -28,6 +28,14 @@
           "code"
           "vscode"
         ];
+    };
+
+    homeConfigurations."user@crab" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = inputs;
+      modules = [
+        ./home.nix
+      ];
     };
   in {
     nixosConfigurations.crab = nixpkgs.lib.nixosSystem {

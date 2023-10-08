@@ -76,6 +76,9 @@
     packages = with pkgs; [
       firefox
       vscode.fhs
+      direnv
+      kitty
+      fish
     ];
   };
 
