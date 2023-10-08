@@ -12,6 +12,7 @@
   outputs = {
     self,
     nixpkgs,
+    home-manager,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -29,20 +30,20 @@
           "vscode"
         ];
     };
-
-    homeConfigurations."user@crab" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = inputs;
-      modules = [
-        ./home.nix
-      ];
-    };
   in {
     nixosConfigurations.crab = nixpkgs.lib.nixosSystem {
       inherit pkgs system;
       specialArgs = inputs;
       modules = [
         ./configuration.nix
+      ];
+    };
+
+    homeConfigurations."user@crab" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = inputs;
+      modules = [
+        ./home.nix
       ];
     };
   };

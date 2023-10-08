@@ -90,6 +90,7 @@
     vim
     spice-vdagent
     git
+    home-manager
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
