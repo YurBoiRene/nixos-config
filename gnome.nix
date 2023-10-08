@@ -10,13 +10,28 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.gnome.tracker-miners.enable = false;
   services.gnome.tracker.enable = false;
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.xserver.libinput.enable = true;
+
+  # Configuration
+  programs.dconf.enable = true;
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
 
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
     xkbVariant = "";
   };
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.caffeine
+    gnomeExtensions.impatience
+    gnomeExtensions.noannoyance-fork
+    gnomeExtensions.spotify-tray
+    gnomeExtensions.clipboard-indicator
+
+    gnome.gnome-tweaks
   ];
 }
