@@ -43,7 +43,7 @@
       inherit pkgs;
       extraSpecialArgs = inputs;
       modules = [
-        ./home.nix
+        ./user/home.nix
       ];
     };
   };

@@ -74,13 +74,13 @@
     description = "user";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
-      vscode.fhs
-      direnv
-      kitty
-      fish
+      
     ];
   };
+
+  # users.users.user.shell = pkgs.fish;
+  programs.fish.enable = true;
+  # environment.pathsToLink = ["/share/fish"];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
