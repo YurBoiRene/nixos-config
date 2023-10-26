@@ -72,18 +72,15 @@
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ];
     packages = with pkgs; [
       
     ];
   };
 
-  # users.users.user.shell = pkgs.fish;
+  users.users.user.shell = pkgs.fish;
   programs.fish.enable = true;
   # environment.pathsToLink = ["/share/fish"];
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
@@ -102,9 +99,6 @@
   # };
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

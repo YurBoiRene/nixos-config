@@ -17,13 +17,13 @@
     evolution
     decoder
 
-    ffmpeg
-    zip
-    rsync
-    gimp
+    # ffmpeg
+    # zip
+    # rsync
+    # gimp
 
 
-    roboto
+    # roboto
   ];
 
   programs.home-manager.enable = true;
@@ -32,20 +32,43 @@
   home.username = "user";
   home.stateVersion = "23.05";
 
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    # Fish integration automatically enabled
+    nix-direnv.enable = true;
+  };
   programs.kitty.enable = true;
   programs.git = {
     enable = true;
-    userName = "YurBoiRene";
+    userName = "rene";
     userEmail = "renedes@protonmail.com";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+    aliases = {
+      clog = "log-specific --all";
+      clogs = "log-specific";
+      log-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'";
+    };
+    extraConfig = {
+      pull.ff = "only";
+      commit.verbose = "true";
+    };
   };
   
   programs.fish = {
     enable = true;
     functions = {
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
+    };
+    shellAbbrs = {
       gs = "git status";
     };
+  };
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
   };
 
   programs.vscode = {
@@ -87,5 +110,4 @@
       ];
     };
   };
-  
 }
