@@ -39,7 +39,7 @@
       ];
     };
 
-    homeConfigurations."user@crab" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."rene@crab" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs; 
       extraSpecialArgs = inputs;
       modules = [

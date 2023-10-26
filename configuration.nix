@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -12,12 +12,11 @@
       ./gnome.nix
     ];
 
-  # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "crab"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -26,6 +25,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  nix.settings.experimental-features = "nix-command flakes";
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -68,19 +69,21 @@
   };
 
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.user = {
+  users.mutableUsers = false;
+  users.users.rene = {
     isNormalUser = true;
-    description = "user";
+    description = "rene";
     extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    hashedPasswordFile = "/nix/persist/keystore/passwords/rene";
     packages = with pkgs; [
       
     ];
   };
+  users.users.root.hashedPasswordFile = "/nix/persist/keystore/passwords/root";
 
-  users.users.user.shell = pkgs.fish;
+  users.users.rene.shell = pkgs.fish;
   programs.fish.enable = true;
-  # environment.pathsToLink = ["/share/fish"];
+  environment.pathsToLink = ["/share/fish"];
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [

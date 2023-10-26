@@ -28,8 +28,8 @@
 
   programs.home-manager.enable = true;
 
-  home.homeDirectory = "/home/user";
-  home.username = "user";
+  home.homeDirectory = "/home/rene";
+  home.username = "rene";
   home.stateVersion = "23.05";
 
   programs.direnv = {
