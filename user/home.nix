@@ -63,6 +63,8 @@
     };
     shellAbbrs = {
       gs = "git status";
+      infra = "/home/rene/Documents/Java/OSUCyberSecurityClub/repos/infra/";
+      javad = "/home/rene/Documents/Java/";
     };
   };
 
