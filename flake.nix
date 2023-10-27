@@ -7,12 +7,14 @@
        url = "github:nix-community/home-manager";
        inputs.nixpkgs.follows = "nixpkgs";
     };
+    impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    impermanence,
     ...
   } @ inputs: let
     system = "x86_64-linux";

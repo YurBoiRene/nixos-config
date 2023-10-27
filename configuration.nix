@@ -1,10 +1,11 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, impermanence, lib, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
-      ./vpn.nix
+      "${impermanence}/nixos.nix"
+      # ./vpn.nix
       ./gnome.nix
     ];
 
@@ -76,5 +77,17 @@
     home-manager
   ];
 
-  system.stateVersion = "23.05"; # Did you read the comment?
+  environment.persistence."/nix/persist/system" = {
+    hideMounts = false;
+    directories = [
+      "/etc/nixos"
+      "/etc/NetworkManager"
+      "/var/log"
+    ];
+    files = [
+      "/etc/machine-id"
+    ];
+  };
+
+  system.stateVersion = "23.05";
 }
