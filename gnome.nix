@@ -27,6 +27,7 @@
     gnomeExtensions.noannoyance-fork
     gnomeExtensions.spotify-tray
     gnomeExtensions.clipboard-indicator
+    gnomeExtensions.weather-oclock
 
     gnome.gnome-tweaks
   ];
