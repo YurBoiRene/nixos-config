@@ -1,8 +1,11 @@
+home:
+	home-manager switch --flake .#rene@crab
+
 deploy:
-	nixos-rebuild switch --flake . --use-remote-sudo
+	nixos-rebuild switch --flake .#crab --use-remote-sudo
 
 debug:
-	nixos-rebuild switch --flake . --use-remote-sudo --show-trace --verbose
+	nixos-rebuild switch --flake .#crab --use-remote-sudo --show-trace --verbose
 
 update:
 	nix flake update

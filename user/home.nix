@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     firefox
-    rnix-lsp
+    nil
     direnv
 
     gnumake
@@ -26,6 +26,10 @@
 
 
     # roboto
+  ];
+
+  imports = [
+    editors/neovim/neovim.nix
   ];
 
   programs.home-manager.enable = true;
@@ -70,18 +74,13 @@
     };
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-
   programs.vscode = {
     enable = true;
     package = pkgs.vscode.fhs;
     enableUpdateCheck = false;
     userSettings = {
       "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "rnix-lsp";
+      "nix.serverPath" = "nil";
     };
   };
 
