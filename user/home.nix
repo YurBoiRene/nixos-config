@@ -4,6 +4,8 @@
     rnix-lsp
     direnv
 
+    gnumake
+
     fish
     fishPlugins.done
     fishPlugins.fzf-fish
