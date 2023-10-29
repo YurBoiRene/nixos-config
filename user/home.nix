@@ -19,6 +19,8 @@
     evolution
     decoder
 
+    vscode-fhs
+
     # ffmpeg
     # zip
     # rsync
@@ -71,16 +73,6 @@
       gs = "git status";
       infra = "/home/rene/Documents/Java/OSUCyberSecurityClub/repos/infra/";
       javad = "/home/rene/Documents/Java/";
-    };
-  };
-
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode.fhs;
-    enableUpdateCheck = false;
-    userSettings = {
-      "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "nil";
     };
   };
 
