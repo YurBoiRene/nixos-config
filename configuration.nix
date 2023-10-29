@@ -68,10 +68,12 @@
 
   programs.fish.enable = true;
   environment.pathsToLink = ["/share/fish"];
+  environment.variables.EDITOR = "nvim";
 
   # === SYSTEM PACKAGES ===
   environment.systemPackages = with pkgs; [
     vim
+    neovim
     spice-vdagent
     git
     home-manager
