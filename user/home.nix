@@ -21,8 +21,9 @@
 
     vscode-fhs
 
+    zip
+
     # ffmpeg
-    # zip
     # rsync
     # gimp
 
@@ -46,6 +47,11 @@
     nix-direnv.enable = true;
   };
   programs.kitty.enable = true;
+  programs.kitty.font = {
+    package = pkgs.jetbrains-mono;
+    name = "JetBrains Mono";
+    size = 15;
+  };
   programs.git = {
     enable = true;
     userName = "rene";

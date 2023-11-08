@@ -38,6 +38,10 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+  ];
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.spice-vdagentd.enable = true;
