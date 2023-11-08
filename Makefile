@@ -18,5 +18,8 @@ gc:
 	sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
 
 	# garbage collect all unused nix store entries
-	sudo nix store gc --debug
+	sudo nix store gc
+
+	# Optimize nix store with hard links
+	sudo nix-store --optimize
 
